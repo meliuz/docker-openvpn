@@ -1,0 +1,33 @@
+version: 2
+jobs:
+  build-push:
+    docker:
+      - image: docker:17.06.0-ce-git
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      # Docker login
+      - run:
+          name: Docker login
+          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
+
+      # Build the image meliuz/docker-openvpn
+      - run:
+          name: Docker build
+          command: docker build --tag meliuz/${CIRCLE_PROJECT_REPONAME} .
+
+      # Push to Docker Hub only master branch
+      - deploy:
+          name: Docker push
+          command: docker push meliuz/${CIRCLE_PROJECT_REPONAME}
+
+workflows:
+  version: 2
+  meliuz-workflow:
+    jobs:
+      - build-push:
+          filters:
+            branches:
+              only:
+                - master
