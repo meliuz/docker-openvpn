@@ -1,0 +1,17 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: meliuz/docker-openvpn
+  description: '# OpenVPN for Docker
+
+
+    [![Build Status](https://travis-ci.org/kylemanna/docker-openvpn.svg)](https://travis-ci.org/kylemanna/docker-openvpn)
+
+    [![Docker ...'
+  name: docker-openvpn
+spec:
+  lifecycle: production
+  type: service
