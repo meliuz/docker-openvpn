@@ -1,0 +1,6 @@
+---
+site_name: docker-openvpn
+nav:
+  - Home: README.md
+plugins:
+  - techdocs-core
